@@ -5,7 +5,9 @@ repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 runtime_python="${CODEX_BUNDLED_PYTHON:-python3}"
 renderer="${DOCX_RENDERER:-render_docx.py}"
 
-"$runtime_python" "$repo_dir/scripts/build_resume.py"
-"$runtime_python" "$renderer" "$repo_dir/resume/李鑫-简历-公开版.docx" --output_dir "$repo_dir/tmp/rendered" --emit_pdf
-cp "$repo_dir/tmp/rendered/李鑫-简历-公开版.pdf" "$repo_dir/resume/李鑫-简历-公开版.pdf"
-cp "$repo_dir/resume/李鑫-简历-公开版.pdf" "$repo_dir/resume/releases/v$(cat "$repo_dir/VERSION")/李鑫-简历-公开版.pdf"
+output_dir="${RESUME_OUTPUT_DIR:-$repo_dir/dist}"
+render_dir="$repo_dir/tmp/resume-rendered"
+
+RESUME_OUTPUT_DIR="$output_dir" "$runtime_python" "$repo_dir/scripts/build_resume.py"
+"$runtime_python" "$renderer" "$output_dir/李鑫-简历-投递版.docx" --output_dir "$render_dir" --emit_pdf
+cp "$render_dir/李鑫-简历-投递版.pdf" "$output_dir/李鑫-简历-投递版.pdf"

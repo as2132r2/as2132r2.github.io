@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const textExtensions = new Set([".html", ".css", ".md", ".mjs", ".py", ".sh", ""]);
-const ignoredDirectories = new Set([".git", "tmp"]);
+const ignoredDirectories = new Set([".git", "tmp", "dist"]);
 const forbidden = [
   /\b1[3-9]\d{9}\b/,
   /\/mnt\/LinuxData/,

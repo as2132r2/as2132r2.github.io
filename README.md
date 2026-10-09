@@ -1,6 +1,6 @@
-# 李鑫的个人主页与公开简历
+# 李鑫的个人主页
 
-这是我的个人主页源码，也是公开简历的版本仓库。页面只使用 HTML 和 CSS，不依赖构建框架，合并到 `main` 后由 GitHub Actions 发布到 GitHub Pages。
+这是我的个人主页源码，也保存用于本地生成简历的内容和排版脚本。网站只展示项目、工作经历和教育背景，不发布生成后的简历文件或照片、手机号等隐私信息。页面只使用 HTML 和 CSS，不依赖构建框架，合并到 `main` 后由 GitHub Actions 发布到 GitHub Pages。
 
 ## 本地预览
 
@@ -14,14 +14,20 @@ python3 -m http.server 8000
 node scripts/validate.mjs
 ```
 
-## 更新简历
+## 本地导出简历
 
 1. 更新 `index.html` 与 `scripts/build_resume.py` 中的事实内容。
-2. 运行 `scripts/build-resume.sh` 生成公开版 DOCX 和 PDF。
-3. 更新 `VERSION`、`CHANGELOG.md` 以及页脚版本号。
-4. 运行校验，提交 PR；合并后创建同版本 Git tag 和 GitHub Release。
+2. 在本地通过 `RESUME_PHONE` 和 `RESUME_PHOTO` 提供投递版隐私信息。
+3. 运行 `scripts/build-resume.sh`，文件会生成到被 Git 忽略的 `dist/`。
+4. 更新网站时同步修改 `VERSION`、`CHANGELOG.md` 和页脚版本号，运行校验后提交 PR。
 
-公开版不包含手机号，也不复制团队私有仓库中的代码、截图或内部文档。私有项目只保留可核实的个人贡献摘要。
+示例：
+
+```bash
+RESUME_PHONE='你的手机号' RESUME_PHOTO='/照片的绝对路径' ./scripts/build-resume.sh
+```
+
+生成物不得提交到 GitHub。仓库也不复制团队私有仓库中的代码、截图或内部文档，私有项目只保留可核实的个人贡献摘要。
 
 ## 许可
 

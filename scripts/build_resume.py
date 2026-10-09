@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from docx import Document
@@ -10,8 +11,11 @@ from docx.shared import Cm, Pt, RGBColor
 
 
 REPO_DIR = Path(__file__).resolve().parent.parent
-OUT_DIR = REPO_DIR / 'resume'
-DOCX_PATH = OUT_DIR / '李鑫-简历-公开版.docx'
+OUT_DIR = Path(os.environ.get('RESUME_OUTPUT_DIR', REPO_DIR / 'dist'))
+PHOTO_VALUE = os.environ.get('RESUME_PHOTO', '')
+PHOTO = Path(PHOTO_VALUE).expanduser() if PHOTO_VALUE else None
+PHONE = os.environ.get('RESUME_PHONE', '').strip()
+DOCX_PATH = OUT_DIR / '李鑫-简历-投递版.docx'
 
 NAVY = '17365D'
 MID = '465A70'
@@ -138,10 +142,11 @@ title_style.font.color.rgb = RGBColor.from_string(BLACK)
 # Header
 header = doc.add_table(rows=1, cols=2)
 header.autofit = False
-header.columns[0].width = Cm(18.1)
-header.columns[1].width = Cm(0.01)
-header.rows[0].cells[0].width = Cm(18.1)
-header.rows[0].cells[1].width = Cm(0.01)
+has_photo = PHOTO is not None and PHOTO.exists()
+header.columns[0].width = Cm(16.4 if has_photo else 18.1)
+header.columns[1].width = Cm(1.7 if has_photo else 0.01)
+header.rows[0].cells[0].width = Cm(16.4 if has_photo else 18.1)
+header.rows[0].cells[1].width = Cm(1.7 if has_photo else 0.01)
 for cell in header.rows[0].cells:
     set_cell_margins(cell, 0, 0, 0, 0)
     cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
@@ -159,7 +164,14 @@ add_run(p, '东北大学计算机科学与技术硕士研究生  |  AI 应用与
 
 p = left.add_paragraph()
 set_para(p, before=0, after=0)
-add_run(p, '20225802@stu.neu.edu.cn  |  github.com/as2132r2  |  as2132r2.github.io', size=8.8, color=GRAY)
+contact_parts = [PHONE, '20225802@stu.neu.edu.cn', 'github.com/as2132r2']
+add_run(p, '  |  '.join(part for part in contact_parts if part), size=8.8, color=GRAY)
+
+if has_photo:
+    right = header.cell(0, 1)
+    p = right.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    p.add_run().add_picture(str(PHOTO), width=Cm(1.62), height=Cm(1.62))
 
 add_section_heading(doc, '专业学习')
 p = doc.add_paragraph()
