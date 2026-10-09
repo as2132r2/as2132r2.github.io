@@ -161,10 +161,10 @@ p = left.add_paragraph()
 set_para(p, before=0, after=0)
 add_run(p, '20225802@stu.neu.edu.cn  |  github.com/as2132r2  |  as2132r2.github.io', size=8.8, color=GRAY)
 
-add_section_heading(doc, '个人概要')
+add_section_heading(doc, '专业学习')
 p = doc.add_paragraph()
 set_para(p, before=0, after=0.8, line=1.05)
-add_run(p, '聚焦 AI 应用与桌面端产品开发，具有 Electron 交互、会话状态可靠性、本地数据安全与教学技能工程经验。能从用户问题定位根因，通过自动化测试、CI 与真机走查完成交付。', size=9.4)
+add_run(p, '本科阶段依托东北大学计算机科学与工程学院课程与实验训练，系统学习计算机组成原理（92）、离散数学（94）、编译原理（88）、操作系统（88）、计算机网络与数据库原理；完成路由配置、VLAN 通信、高级交换机配置和小型校园网搭建等实践。', size=9.4)
 
 add_section_heading(doc, '教育经历')
 add_title_row(doc, '东北大学', '计算机科学与技术  硕士研究生在读', '2026 - 至今')
@@ -172,7 +172,7 @@ add_title_row(doc, '东北大学', '计算机科学与技术  本科', '2022 - 2
 
 add_section_heading(doc, '工程实践')
 add_title_row(doc, '薄荷 Agent AI 助手生态', 'AI 应用研发', '2026.06 - 至今')
-add_bullet(doc, '在 bohe-ai-consultation 与 juxiang-skills 累计合并 75 个个人 PR。修复会话谱系重启丢失与 SSE 重连吞事件问题，增加本地持久化、LRU 上限、坏文件容错和回归测试；另处理并发 429、会话中毒恢复和跨线程交互串台。')
+add_bullet(doc, '围绕桌面端会话可靠性，修复会话谱系重启丢失与 SSE 重连吞事件问题，增加本地持久化、LRU 上限、坏文件容错和回归测试；另处理并发 429、会话中毒恢复和跨线程交互串台。')
 add_bullet(doc, '提交并迭代学生 AI 创作、心理陪伴与大四生涯规划三类专属工作台，完成作品文件编辑与历史、教练分块回复、停靠对话、本地数据存储和确认后写入机制。')
 add_bullet(doc, '开发作文批改与组卷助手技能，支持 OCR 原文确认、Word 原生批注、学生/教师版分离、确定性 HTML 渲染与交付预检；扩展 K12 学段学科 Profile，用测试固化题型、版式和评分约束。')
 
