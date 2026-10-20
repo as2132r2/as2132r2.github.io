@@ -196,9 +196,9 @@ add_title_row(doc, '利欧科研文献管理系统', '本科毕业设计  开源
 add_bullet(doc, '基于 Spring Boot + Vue 3 整理文献处理与 RAG 问答链路：MinIO 分片上传、Apache Tika 流式解析、Embedding 批处理、Elasticsearch BM25/向量混合检索（0.3/0.7）与 WebSocket 流式回答溯源。')
 add_bullet(doc, '通过 Spring Security + JWT 和文档公开属性进行权限过滤，使用 MySQL、Redis、Kafka 和 MinIO 支撑异步处理；完成后端打包、前端生产构建与 12 项单元测试验证。')
 
-add_title_row(doc, 'Learning Agent 编程学习助手', 'LangGraph 学习毕业项目 · 开源', '2026.10')
-add_bullet(doc, '基于 Python + LangGraph 实现聊天、计算工具与 RAG 多路线流程，使用 SQLite 检查点恢复会话；整合 BGE 向量、FTS5 关键词检索、RRF 融合和模型精排，回答展示资料引用。')
-add_bullet(doc, '通过 interrupt 人工审批、会话与 SHA256 快照校验、幂等文件发布和有限重试约束笔记写入；提供离线演示与自动化验收。源码：github.com/as2132r2/learning-agent。')
+add_title_row(doc, 'LangChain / LangGraph 逐日学习档案', '个人学习实践 · 开源参考', '2026.09 - 2026.10')
+add_bullet(doc, '整理并公开 Day01—Day35 的 443 份逐日代码、复习笔记与练习资料，覆盖模型与记忆、工具调用、RAG、MCP、异步接口、评估和工程化实践；保留分步演进，不作为生产框架宣传。')
+add_bullet(doc, '毕业练习实现会话持久化、工具循环、引用回答、人工审批与幂等笔记写入，并提供离线测试；其余每日脚本明确依赖和历史运行边界。源码：github.com/as2132r2/learning-agent。')
 
 add_section_heading(doc, '荣誉与证书')
 p = doc.add_paragraph()
